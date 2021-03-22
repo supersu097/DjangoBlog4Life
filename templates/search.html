@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% block body %}
+<div id="content" class="site-content">
+
+    <div class="container">
+        {% if is_index == 'NO' %}
+        <header class="archive-page-header">
+            <h3 class="archive-page-title">{{ paginator_title }}</h3>
+        </header>
+        {% endif %}
+        <div id="primary" class="col-md-9 content-area">
+            <main id="main" class="site-main" role="main">
+
+                {% for post in curr_page %}
+                <article id="post-{{ post.id }}"
+                    class="post-content post-{{ post.id }} post type-post status-publish format-standard hentry category-linux tag-cdn tag-fontawesome tag-webfont tag-21">
+                    <header class="entry-header">
+                        <span class="screen-reader-text">{{ post.title }}</span>
+                        <h2 class="entry-title">
+                            <a href="/{{ post.slug }}" rel="bookmark">{{ post.title }}</a>
+                        </h2>
+                        <div class="entry-meta">
+                            <h5 class="entry-date"><i class="fa fa-calendar-o"></i> <a href="/{{ post.slug }}"
+                                    rel="bookmark">
+                                    <time class="entry-date" datetime="{{ post.post_date }}">{{ post.post_date|date:'Y年n月d日' }} </time>
+                                </a><span class="byline"><span class="sep"></span><i class="fa fa-user"></i>
+                                    <span class="author vcard">{{ superuser_name|capfirst }}</span></span>
+                                <i class="fa fa-comments-o"></i><span class="screen-reader-text">Comments </span> <a
+                                    href="/{{ post.slug }}/#respond" class="comments-link">{{ post.comments_set.count }}
+                                    Comment</a>
+                            </h5>
+                        </div><!-- .entry-meta -->
+                    </header><!-- .entry-header -->
+
+                    <div class="entry-summary">
+                        {% if post.is_wordpress == 'yes' %}
+                        {{ post.content |empty2br |is_highlightjs |media_replace |truncatewords_html:50 |safe }}
+                        {% else %}
+                        {{ post.content |is_highlightjs |truncatewords_html:50 |safe }}
+                        {% endif %}
+                        &hellip; <a href="/{{ post.slug }}" class="read-more">阅读更多 </a></div>
+                    <!-- .entry-summary -->
+                    <footer class="entry-footer">
+                    </footer><!-- .entry-footer -->
+                </article><!-- #post-## -->
+                {% endfor %}
+                {% include 'search_paginator.html' %}
+            </main><!-- #main -->
+        </div><!-- #primary -->
+        {% endblock %}

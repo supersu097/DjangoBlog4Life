@@ -1,0 +1,281 @@
+{% load static %}
+{% load my_filter %}
+<!DOCTYPE html>
+
+<!--[if IE 8]>
+<html id="ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 8) ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="profile" href="http://gmpg.org/xfn/11"/>
+    {% if is_index == 'YES' %}
+        <title>{{ site_name }} {{ site_separator }} {{ site_subtitle }}</title>
+    {% else %}
+        <title>{{ page_title }} {{ site_separator }} {{ site_name }}</title>
+    {% endif %}
+    <meta name="keywords" content="{{ page_keywords }}">
+    <meta name="description" itemprop="description" content="{{ page_description|extract_content:80 }}">
+
+    {% if is_index == 'YES' %}
+        <link rel="canonical" href="{{ site_url }}/">
+    {% else %}
+        <link rel="canonical" href="{{ site_url }}{{ page_url }}">
+    {% endif %}
+    <link rel='stylesheet' id='prism-style-css' href="{% static '/css/highlightjs/Mosheng.css' %}" type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='pure-highlightjs-css-css' href="{% static '/css/highlightjs/pure-highlight.css' %}"
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='better-recent-comments-css'
+          href="{% static '/css/better-recent-comments.min.css' %}"
+          type='text/css' media='all'/>
+    <link rel='stylesheet' id='bootstrap-css'
+          href={% static '/css/bootstrap.css' %} type='text/css'
+          media='all'/>
+    <link rel='stylesheet' id='font-awesome-css'
+          href={% static '/css/font-awesome.min.css' %}
+                  type='text/css' media='all'/>
+    <link rel='stylesheet' id='nisarg-style-css'
+          href={% static '/css/style.css' %} type='text/css' media='all'/>
+    <link rel='stylesheet' id='nisarg-style-inline-css'
+          href={% static '/css/nisarg-style-inline-css.css' %} type='text/css'/>
+    <link rel='stylesheet' id='custom-css'
+          href={% static '/css/custom-css.css' %} type='text/css'/>
+    <script type='text/javascript'
+            src="{% static '/js/jquery/jquery.js' %}"></script>
+    <script type='text/javascript'
+            src="{% static '/js/jquery/jquery-migrate.min.js' %}"></script>
+{#    <link rel="stylesheet" href="{% static '/fancybox/jquery.fancybox.css' %}" type="text/css" media="screen" />#}
+{#    <script type="text/javascript" src="{% static '/fancybox/jquery.fancybox.pack.js' %}"></script>#}
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src="{% static '/js/html5shiv.js' %}"></script>
+    <![endif]-->
+    <meta name="generator" content="Django 2.2 LTS"/>
+    <link rel="icon" href="{{ superuser_email |gen_gavatar_link:32 }}"/>
+    <link rel="icon" href="{{ superuser_email |gen_gavatar_link:192 }}"/>
+    <link rel="apple-touch-icon" href="{{ superuser_email |gen_gavatar_link:192 }}"/>
+    <meta name="msapplication-TileImage" content="{{ superuser_email |gen_gavatar_link:144 }}"/>
+    {{ google_or_baidu_analytics_code |safe }}
+</head>
+
+<body class="home blog logged-in aa-prefix-sharp-">
+<div id="page" class="hfeed site">
+    <header id="masthead" role="banner">
+        <nav id="site-navigation" class="main-navigation navbar-fixed-top navbar-left" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container" id="navigation_menu">
+                <div class="navbar-header">
+                    <button type="button" class="menu-toggle" data-toggle="collapse"
+                            data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <div class="sharpgan_logo"
+                             style="background: url({{ superuser_email |gen_gavatar_link:30 }});">
+                        </div>
+                        {{ site_name }}
+                    </a>
+                </div><!-- .navbar-header -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul id="menu-%e5%af%bc%e8%88%aa" class="primary-menu">
+                        <li id="menu-item-133"
+                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-133">
+                            <a href="/" aria-current="page"><i class="fa fa-home"
+                                                               aria-hidden="true"></i>首页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--#container-->
+        </nav>
+        <div id="cc_spacer"></div><!-- used to clear fixed navigation by the themes js -->
+        <div class="site-header">
+            <div class="site-branding">
+                <a class="home-link" href="/" title="{{ site_name }}" rel="home">
+                    <h1 class="site-title">{{ site_brand_title }}</h1>
+                    <h2 class="site-description">{{ site_brand_desc }}</h2>
+                </a>
+            </div>
+            <!--.site-branding-->
+        </div>
+        <!--.site-header-->
+    </header>
+    {% block body %}{% endblock %}
+    <div id="secondary" class="col-md-3 sidebar widget-area" role="complementary">
+        <aside class="widget sharp-widget">
+            {{ site_sidebar_adsense |safe}}
+        </aside>
+        <aside id="search-2" class="widget widget_search">
+            <h4 class="widget-title">搜索</h4>
+            <form role="search" method="get" class="search-form" action="/search">
+                <label>
+                    <span class="screen-reader-text">Search for:</span>
+                    <input type="search" class="search-field" placeholder="Search &hellip;" value="" name="q"
+                           title="Search for:"/>
+                </label>
+                <button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
+            </form>
+        </aside>
+        <aside id="categories-3" class="widget widget_categories">
+            <h4 class="widget-title">文章分类</h4>
+            <ul>
+                {% for cat in category_list %}
+                    <li class="cat-item cat-item-{{ cat.id }}"><a
+                            href="/category/{{ cat.slug }}">{{ cat.name }}</a> ({{ cat.count }})
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </aside>
+        <aside id="archives-2" class="widget widget_archive">
+            <h4 class="widget-title">归档</h4>
+            <ul>
+                {% for archive in archive_list_and_count %}
+                    <li><a href='/archive/{{ archive.year }}/{{ archive.month }}'>{{ archive.year }}年{{ archive.month }}月
+                        ({{ archive.archive_count }})</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <aside id="better_recent_comments-2" class="widget widget_recent_comments">
+            <h4 class="widget-title">最近评论</h4>
+            <ul id="better-recent-comments" class="recent-comments-list with-avatars">
+                {% for comment in comments_list_sidebar %}
+                    <li class="recentcomments recent-comment">
+                        <div class="comment-wrap" style="padding-left:50px; min-height:44px;">
+                                <span class="comment-avatar">
+                                <img src="{{ comment.email |gen_gavatar_link:50 }}"
+                                     class='avatar avatar-40 photo'/></span>
+
+                            <span
+                                    class="comment-author-link">{{ comment.username }}</span> on <span
+                                class="comment-post"><a
+                                style="color:#009688"
+                                href="/{{ comment.post_slug }}#comment-{{ comment.comment_id }}">{{ comment.post_title }}</a></span>:
+                            &ldquo;<span class="comment-excerpt">{{ comment.content |extract_content:20 }}</span>&rdquo;
+                            <span
+                                    class="comment-date">{{ comment.comment_date | date:"Y年n月d日 H:i" }}</span></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <aside id="tag_cloud-3" class="widget widget_tag_cloud">
+            <h4 class="widget-title">标签云</h4>
+            <div class="tagcloud">
+                {% for tag in tag_cloud_list %}
+
+                    <a href="/tag/{{ tag.tag_slug }}"
+                       class="tag-cloud-link tag-link-{{ tag.tag_id }} tag-link-position-{{ tag.order }}"
+                       style="font-size: {{ tag.font_size }}pt;"
+                       aria-label="{{ tag.tag_name }} ({{ tag.tag_count }}个项目)">{{ tag.tag_name }}</a>
+                {% endfor %}
+            </div>
+        </aside>
+        <aside id="custom_html-2" class="widget_text widget widget_custom_html">
+            <h4 class="widget-title">友情链接</h4>
+            <div class="textwidget custom-html-widget">
+                {% for link in friend_link_list %}
+                <a href="{{ link.site_url }}">{{ link.site_name }}</a>
+		<br>
+                {% endfor %}
+            </div>
+        </aside>
+    </div><!-- #secondary .widget-area -->
+
+
+</div>
+<!--row-->
+</div>
+<!--.container-->
+</div><!-- #content -->
+
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <span> COPYRIGHT © {{ site_beginning }}-{{ curr_year }} {{ site_name }} </span>
+
+        <span class="sep"> | </span>
+        Powered by <a href="https://www.djangoproject.com/">Django</a> 2.2 LTS
+        <span class="sep"> | </span>
+        Theme: <a href="https://wordpress.org/themes/nisarg/" rel="designer">Nisarg</a>
+        <span class="sep"> | </span>
+        Ported by <a href="https://www.sharpgan.com/" rel="designer">Sharp</a>
+        <span class="sep"> | </span>
+        <a href="https://github.com/supersu097/DjangoBlog4Life" target="_blank" rel="nofollow">Source Code</a>
+        <br/>
+        <span>{{ footer_desc|safe }}</span>
+        <a href="{{ github_link }}" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+        <br/>
+        {% if icp_num %}
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">{{ icp_num }}</a>
+        <br>
+        {% endif %}
+        {% if police_num %}
+        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{ police_num | str2number }}"
+           target="_blank"
+           rel="nofollow"><i class="police-ico"
+                             style="background: url({% static '/images/police-ico.png' %}) 0 0 no-repeat;"></i>{{ police_num }}
+        </a>
+        {% endif %}
+    </div><!-- .site-info -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+<div id="cc-myssl-id" style="position: fixed;right: 0;bottom: 0;width: 65px;height: 65px;z-index: 99;">
+    <a href="https://myssl.com/{{ site_url | domain_extractor }}?from=mysslid"><img
+            src="https://static.myssl.com/res/images/myssl-id.png" alt="" style="width:100%;height:100%"></a>
+</div>
+<div id="PMtgaNnoUhm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">啊噢，发生了什么~</h5>
+      </div>
+      <div class="modal-body">
+        {{ anti_adblock_hint }}
+      </div>
+    </div>
+  </div>
+</div>
+<div id="svdYUvsdop" class="advertisement" style="display: none">
+</div>
+<script type='text/javascript' src={% static '/js/highlightjs/pure-highlight.js' %}></script>
+<script type='text/javascript' src={% static '/js/highlightjs/prism.js' %}></script>
+<script type='text/javascript' src={% static '/js/bootstrap.js' %}></script>
+<script type='text/javascript' src={% static '/js/navigation.js' %}></script>
+<script type='text/javascript' src={% static '/js/skip-link-focus-fix.js' %}></script>
+<script type='text/javascript' src={% static '/js/comment-reply.js' %}></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var screenReaderText = {"expand": "expand child menu", "collapse": "collapse child menu"};
+    /* ]]> */
+</script>
+<script type='text/javascript' src={% static '/js/nisarg.js' %}></script>
+<script src="{% static '/js/ad-blocker.js' %}" type="text/javascript"></script>
+<script type="text/javascript">
+    var django = {
+        "jQuery": jQuery.noConflict(true)
+    };
+    var jQuery = django.jQuery;
+    var $ = jQuery;
+    $(document).ready(function () {
+        $('body').on('click', '.comment-reply-link', function () {
+            addComment.moveForm("div-comment-" + $(this).attr('data-commentid'), $(this).attr('data-commentid'), "respond", $(this).attr('data-postid'));
+            return false;
+        });
+    })
+    {#if(!document.getElementById('aSMlvIOdmgoNM') || !document.getElementById('svdYUvsdop')){#}
+    {#$('#PMtgaNnoUhm').modal({#}
+    {#            backdrop: 'static',#}
+    {#            keyboard: false#}
+    {#        }#}
+    {#    )}#}
+</script>
+</body>
+
+</html>

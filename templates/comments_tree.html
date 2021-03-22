@@ -1,0 +1,52 @@
+{% load my_filter %}
+{% load mptt_tags %}
+{% recursetree  curr_comment_page%}
+    <li id="comment-{{ node.id }}"
+        class="comment even thread-odd thread-alt depth-{{ node.level }} {{ node.is_leaf_node|is_parent }}">
+        <article id="div-comment-{{ node.id }}" class="comment-body">
+            <footer class="comment-meta">
+                <div class="comment-author vcard">
+                    <div class="badge-item">
+                        {% if node.user_name|lower == superuser_name %}
+                            <span class="notify-badge">Admin</span>
+                        {% endif %}
+                        <img alt=''
+                             src='{{ node.email |gen_gavatar_link:50 }}'
+                             srcset='{{ node.email |gen_gavatar_link:50 }}'
+                             class='avatar avatar-50 photo' height='50' width='50'/>
+                    </div>
+                    <b class="fn">{{ node.user_name }}</b><span class="says">说道：</span>
+                </div><!-- .comment-author -->
+
+                <div class="comment-metadata">
+                    <a href="/{{ curr_post.slug }}/comment/page/{{ curr_comment_page.number }}#comment-{{ node.id }}">
+                        <time datetime="{{ node.comment_date }}">
+                            {{ node.comment_date|date:'Y-n-d G:H:i' }}
+                        </time>
+                    </a>
+                </div><!-- .comment-metadata -->
+
+            </footer><!-- .comment-meta -->
+
+            <div class="comment-content">
+                <p>{{ node.content |safe }}</p>
+            </div><!-- .comment-content -->
+
+            <div class="reply"><a rel='nofollow' class='comment-reply-link'
+                                  href='/{{ curr_post.slug }}/#respond'
+                                  data-commentid="{{ node.id }}" data-postid="{{ curr_post.id }}"
+                                  data-belowelement="div-comment-{{ node.id }}"
+                                  data-respondelement="respond" aria-label='回复给{{ node.user_name }}'>回复</a>
+            </div>
+        </article><!-- .comment-body -->
+        {% if not node.is_leaf_node %}
+            {% if node.level >= 4 %}
+                {{ children }}
+            {% else %}
+                <ol class="children">
+                    {{ children }}
+                </ol>
+            {% endif %}
+        {% endif %}
+    </li>
+{% endrecursetree %}

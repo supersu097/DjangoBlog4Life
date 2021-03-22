@@ -1,0 +1,28 @@
+{% if page_count != 1 %}
+    <nav class="navigation posts-navigation" role="navigation">
+        <h2 class="screen-reader-text">Posts navigation</h2>
+        <div class="nav-links">
+            <div class="row">
+                {% if curr_page.has_previous %}
+                    {% if curr_page.previous_page_number == 1 %}
+                        <div class="col-md-6 prev-post">
+                            <a href="/search?q={{ query_str }}"><i class="fa fa-angle-double-left"></i>上一页</a>
+                        </div>
+                    {% else %}
+                        <div class="col-md-6 prev-post">
+                            <a href="/search/page/{{ curr_page.previous_page_number }}?q={{ query_str }}"><i
+                                    class="fa fa-angle-double-left"></i>上一页</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if curr_page.has_next %}
+                    <div class="col-md-6 next-post">
+                        <a href="/search/page/{{ curr_page.next_page_number }}?q={{ query_str }}">下一页 <i
+                                class="fa fa-angle-double-right"></i></a>
+                    </div>
+                {% endif %}
+            </div><!-- row -->
+        </div><!-- .nav-links -->
+    </nav><!-- .navigation -->
+{% endif %}

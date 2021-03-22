@@ -1,0 +1,33 @@
+{% if page_count != 1 %}
+    <nav class="navigation posts-navigation" role="navigation">
+        <h2 class="screen-reader-text">Posts navigation</h2>
+        <div class="nav-links">
+            <div class="row">
+                {% if curr_page.has_previous %}
+                    {% if curr_page.previous_page_number == 1 %}
+                        <div class="col-md-6 prev-post">
+                            {% if is_index == 'YES' %}
+                                <a href="/"><i class="fa fa-angle-double-left"></i>上一页</a>
+                            {% else %}
+                                {# Here prefix means the first page uri for any kind of index, usually they're same #}
+                                <a href="{{ prefix }}"><i class="fa fa-angle-double-left"></i>上一页</a>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="col-md-6 prev-post">
+                            <a href="{{ prefix }}/page/{{ curr_page.previous_page_number }}"><i
+                                    class="fa fa-angle-double-left"></i>上一页</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if curr_page.has_next %}
+                    <div class="col-md-6 next-post">
+                        <a href="{{ prefix }}/page/{{ curr_page.next_page_number }}">下一页 <i
+                                class="fa fa-angle-double-right"></i></a>
+                    </div>
+                {% endif %}
+            </div><!-- row -->
+        </div><!-- .nav-links -->
+    </nav><!-- .navigation -->
+{% endif %}

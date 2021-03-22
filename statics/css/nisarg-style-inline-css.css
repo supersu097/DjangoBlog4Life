@@ -1,0 +1,177 @@
+/* Color Scheme */
+
+/* Accent Color */
+
+a:active,
+a:hover,
+a:focus {
+    color: #009688;
+}
+
+.main-navigation .primary-menu > li > a:hover,
+.main-navigation .primary-menu > li > a:focus {
+    color: #009688;
+}
+
+.main-navigation .primary-menu .sub-menu .current_page_item > a,
+.main-navigation .primary-menu .sub-menu .current-menu-item > a {
+    color: #009688;
+}
+
+.main-navigation .primary-menu .sub-menu .current_page_item > a:hover,
+.main-navigation .primary-menu .sub-menu .current_page_item > a:focus,
+.main-navigation .primary-menu .sub-menu .current-menu-item > a:hover,
+.main-navigation .primary-menu .sub-menu .current-menu-item > a:focus {
+    background-color: #fff;
+    color: #009688;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+    color: #009688;
+}
+
+@media (min-width: 768px) {
+
+    .main-navigation .primary-menu > .current_page_item > a,
+    .main-navigation .primary-menu > .current_page_item > a:hover,
+    .main-navigation .primary-menu > .current_page_item > a:focus,
+    .main-navigation .primary-menu > .current-menu-item > a,
+    .main-navigation .primary-menu > .current-menu-item > a:hover,
+    .main-navigation .primary-menu > .current-menu-item > a:focus,
+    .main-navigation .primary-menu > .current_page_ancestor > a,
+    .main-navigation .primary-menu > .current_page_ancestor > a:hover,
+    .main-navigation .primary-menu > .current_page_ancestor > a:focus,
+    .main-navigation .primary-menu > .current-menu-ancestor > a,
+    .main-navigation .primary-menu > .current-menu-ancestor > a:hover,
+    .main-navigation .primary-menu > .current-menu-ancestor > a:focus {
+        border-top: 4px solid #009688;
+    }
+
+    .main-navigation ul ul a:hover,
+    .main-navigation ul ul a.focus {
+        color: #fff;
+        background-color: #009688;
+    }
+}
+
+.main-navigation .primary-menu > .open > a,
+.main-navigation .primary-menu > .open > a:hover,
+.main-navigation .primary-menu > .open > a:focus {
+    color: #009688;
+}
+
+.main-navigation .primary-menu > li > .sub-menu li > a:hover,
+.main-navigation .primary-menu > li > .sub-menu li > a:focus {
+    color: #fff;
+    background-color: #009688;
+}
+
+@media (max-width: 767px) {
+    .main-navigation .primary-menu .open .sub-menu > li > a:hover {
+        color: #fff;
+        background-color: #009688;
+    }
+}
+
+.sticky-post {
+    color: #fff;
+    background: #009688;
+}
+
+.entry-title a:hover,
+.entry-title a:focus {
+    color: #009688;
+}
+
+.entry-header .entry-meta::after {
+    background: #009688;
+}
+
+.fa {
+    color: #009688;
+}
+
+.btn-default {
+    border-bottom: 1px solid #009688;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    border-bottom: 1px solid #009688;
+    background-color: #009688;
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+    border: 1px solid #009688;
+    background-color: #009688;
+}
+
+.next-post a:hover,
+.prev-post a:hover {
+    color: #009688;
+}
+
+.posts-navigation .next-post a:hover .fa,
+.posts-navigation .prev-post a:hover .fa {
+    color: #009688;
+}
+
+
+#secondary .widget-title::after {
+    position: absolute;
+    width: 50px;
+    display: block;
+    height: 4px;
+    bottom: -15px;
+    background-color: #009688;
+    content: "";
+}
+
+#secondary .widget a:hover,
+#secondary .widget a:focus {
+    color: #009688;
+}
+
+#secondary .widget_calendar tbody a {
+    color: #fff;
+    padding: 0.2em;
+    background-color: #009688;
+}
+
+#secondary .widget_calendar tbody a:hover {
+    color: #fff;
+    padding: 0.2em;
+    background-color: #009688;
+}
+
+.badge-item {
+    position: relative;
+    padding-top: 20px;
+    display: inline-block;
+}
+
+.notify-badge {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    color: #009688;
+    padding: 5px 10px;
+    font-size: 10px;
+}
+
+.comment-nav-links {
+    background-color: #fafafa;
+    color: #424242;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    height: 46px;
+    line-height: 25.7143px;
+    margin: 0px 0px 36px;
+    padding: 15px;
+    width: 704px;
+}

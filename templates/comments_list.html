@@ -1,0 +1,72 @@
+<div class="post-comments">
+
+    <div id="comments" class="comments-area">
+
+        <h2 class="comments-title">
+            {{ curr_post.comments_set.count }} 评论 在
+            &ldquo;<span>{{ curr_post.title }}</span>&rdquo; </h2>
+        <ol class="comment-list">
+            {% include "comments_tree.html" %}
+
+        </ol><!-- .comment-list -->
+        {% if comments_list.count > 20 %}
+            {% include 'comment_paginator.html' %}
+        {% endif %}
+        <div id="respond" class="comment-respond">
+            <h3 id="reply-title" class="comment-reply-title">发表评论 <small>
+                <a rel="nofollow" id="cancel-comment-reply-link" href="/{{ curr_post.slug }}/#respond"
+                   style="display:none;">取消回复</a></small>
+            </h3>
+            <form action="/{{ curr_post.slug }}/reply/" method="post" id="commentform" class="comment-form" novalidate>
+                {% csrf_token %}
+                {% if curr_user.is_authenticated %}
+                    <p class="logged-in-as">
+                        已登录为{{ curr_user }}。
+                        <a href="/admin_{{ admin_url_secret }}/logout">注销？</a>
+                    </p>
+                {% else %}
+                    <p class="comment-notes">
+                        <span id="email-notes">电子邮件地址不会被公开。</span> 必填项已用<span class="required">*</span>标注
+                    </p>
+                {% endif %}
+                <p class="comment-form-comment">
+                    {{ comment_form.media }}
+                    {{ comment_form.comment_content.label_tag }}
+                    {{ comment_form.comment_content }}
+                    {{ comment_form.comment_content.errors }}
+                </p>
+                {% if not curr_user.is_authenticated %}
+                    <p class="comment-form-author">
+                        {{ comment_form.user_name.label_tag }}
+                        {{ comment_form.user_name }}
+                        {{ comment_form.user_name.errors }}
+                    </p>
+                    <p class="comment-form-email">
+                        {{ comment_form.user_email.label_tag }}
+                        {{ comment_form.user_email }}
+                        {{ comment_form.user_email.errors }}
+                    </p>
+                    <label>验证码*</label>
+                    {{ comment_form.captcha }}
+                    {{ comment_form.captcha.errors }}
+                {% endif %}
+                <p class="form-submit">
+                    <input name="submit" type="submit" id="submit" class="submit" value="发表评论"/>
+                    {{ comment_form.comment_parent }}
+                </p>
+            </form>
+        </div><!-- #respond -->
+    </div><!-- #comments -->
+</div>
+{% if anchor %}
+    <script type='text/javascript'>
+        var django = {
+            "jQuery": jQuery.noConflict(true)
+        };
+        var jQuery = django.jQuery;
+        var $ = jQuery;
+        $(document).ready(function () {
+            window.location = '{{ anchor }}'
+        });
+    </script>
+{% endif %}

@@ -1,0 +1,307 @@
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by https://www.xiunima.com/
+ * @author Mosheng
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2 !important;
+	background: none !important;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3) !important;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
+	text-align: left !important;
+	white-space: pre !important;
+	word-spacing: normal !important;
+	word-break: normal !important;
+	word-wrap: normal !important;
+	line-height: 1.5 !important;
+
+	-moz-tab-size: 4 !important;
+	-o-tab-size: 4 !important;
+	tab-size: 4 !important;
+
+	-webkit-hyphens: none !important;
+	-moz-hyphens: none !important;
+	-ms-hyphens: none !important;
+	hyphens: none !important;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em !important;
+	margin: .5em 0 !important;
+	overflow: auto !important;
+	border-radius: 0.3em !important;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822 !important;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em !important;
+	border-radius: .3em !important;
+	white-space: normal !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray !important;
+}
+
+.token.punctuation {
+	color: #f8f8f2 !important;
+}
+
+.namespace {
+	opacity: .7 !important;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672 !important;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e !important;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2 !important;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74 !important;
+}
+
+.token.keyword {
+	color: #66d9ef !important;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f !important;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold !important;
+}
+.token.italic {
+	font-style: italic !important;
+}
+
+.token.entity {
+	cursor: help !important;
+}
+
+pre[class*="language-"].line-numbers {
+	position: relative !important;
+	padding-left: 3.8em !important;
+	counter-reset: linenumber !important;
+	max-height:650px !important; /*可以修改代码展示高度*/
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative !important;
+	white-space: inherit !important;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute !important;
+	pointer-events: none !important;
+	top: 0 !important;
+	font-size: 100% !important;
+	left: -3.8em !important;
+	width: 3em !important; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px !important;
+	border-right: 1px solid #999 !important;
+
+	-webkit-user-select: none !important;
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+	user-select: none !important;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none !important;
+		display: block !important;
+		counter-increment: linenumber !important;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber) !important;
+			color: #999 !important;
+			display: block !important;
+			padding-right: 0.8em !important;
+			text-align: right !important;
+		}
+
+div.code-toolbar {
+	position: relative !important;
+}
+
+div.code-toolbar > .toolbar {
+	position: absolute !important;
+	top: .3em !important;
+	right: .2em !important;
+	transition: opacity 0.3s ease-in-out !important;
+	opacity: 0 !important;
+}
+
+div.code-toolbar:hover > .toolbar {
+	opacity: 1 !important;
+}
+
+div.code-toolbar > .toolbar .toolbar-item {
+	display: inline-block !important;
+	margin-right:5px !important;
+}
+
+/*div.code-toolbar > .toolbar a {
+	cursor: pointer !important;
+}
+*/
+
+
+div.code-toolbar > .toolbar button {
+	background: none !important;
+	border: 0 !important;
+	color: inherit !important;
+	font: inherit !important;
+	line-height: normal !important;
+	overflow: visible !important;
+	padding: 0 !important;
+	-webkit-user-select: none !important; /* for button */
+	-moz-user-select: none !important;
+	-ms-user-select: none !important;
+}
+
+div.code-toolbar > .toolbar a,
+div.code-toolbar > .toolbar button,
+div.code-toolbar > .toolbar span {
+	color: #F44336 !important;
+	font-size: .8em !important;
+	padding: 0 .5em !important;
+	background: #f5f2f0 !important;
+	background: rgba(224, 224, 224, 0.2) !important;
+	box-shadow: 0 2px 0 0 rgba(0,0,0,0.2) !important;
+	border-radius: .5em !important;
+	text-decoration:none !important;
+}
+
+div.code-toolbar > .toolbar a:hover,
+div.code-toolbar > .toolbar a:focus,
+div.code-toolbar > .toolbar button:hover,
+div.code-toolbar > .toolbar button:focus,
+div.code-toolbar > .toolbar span:hover,
+div.code-toolbar > .toolbar span:focus {
+	color: #FAFAFA !important;
+	/*color: inherit !important;*/
+	text-decoration: none !important;
+}
+
+/**/
+pre[class*="language-"].line-numbers {
+    padding-top:40px !important; 
+    /*为了加语言导航条*/
+	line-height:1.6 !important;
+	background: #21252b !important;
+	box-shadow: 0 10px 30px 0px rgba(0,0,0,.4) !important;
+
+    font: 15px/22px "Microsoft YaHei", Arial, Sans-Serif !important;
+   
+    margin-bottom: 24px !important;
+    max-width: 100% !important;
+    overflow: auto !important;
+    text-shadow: none !important;
+    color: #000 !important;
+    padding-top: 30px !important;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .4) !important;
+
+
+}
+
+.pure-highlightjs[class*="language-"]:before {
+    text-transform: uppercase !important;
+	color:#ffffff !important;
+    height: 38px !important;
+    line-height: 38px !important;
+    font-size: 14px !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 700 !important;
+    padding: 0 80px !important;
+    text-indent: 15px !important;
+    float: left !important;
+}
+
+.pure-highlightjs.language-none:before{content: 'txt' !important;}
+.pure-highlightjs.language-php:before{content: 'php' !important;}
+.pure-highlightjs.language-css:before{content: 'css' !important;}
+.pure-highlightjs.language-markup:before{content: 'markup' !important;}
+.pure-highlightjs.language-xml:before{content: 'xml' !important;}
+.pure-highlightjs.language-html:before{content: 'html' !important;}
+.pure-highlightjs.language-mathml:before{content: 'mathml' !important;}
+.pure-highlightjs.language-svg:before{content: 'svg' !important;}
+.pure-highlightjs.language-clike:before{content: 'clike' !important;}
+.pure-highlightjs.language-javascript:before{content: 'javascript' !important;}
+.pure-highlightjs.language-js:before{content: 'js' !important;}
+.pure-highlightjs.language-c:before{content: 'c' !important;}
+.pure-highlightjs.language-bash:before{content: 'bash' !important;}
+.pure-highlightjs.language-shell:before{content: 'shell' !important;}
+.pure-highlightjs.language-cpp:before{content: 'cpp' !important;}
+.pure-highlightjs.language-diff:before{content: 'diff' !important;}
+.pure-highlightjs.language-markup-templating:before{content: 'markup-templating' !important;}
+.pure-highlightjs.language-git:before{content: 'git' !important;}
+.pure-highlightjs.language-java:before{content: 'java' !important;}
+.pure-highlightjs.language-json:before{content: 'json' !important;}
+.pure-highlightjs.language-jsonp:before{content: 'jsonp' !important;}
+.pure-highlightjs.language-markdown:before{content: 'markdown' !important;}
+.pure-highlightjs.language-objectivec:before{content: 'objectivec' !important;}
+.pure-highlightjs.language-sql:before{content: 'sql' !important;}
+.pure-highlightjs.language-python:before{content: 'python' !important;}
+
+.pure-highlightjs[class*="language-"]:after {
+    content: " " !important;
+    position: absolute !important;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+    background: #fc625d !important;
+    width: 12px !important;
+    height: 12px !important;
+    top: 0 !important;
+    left: 20px !important;
+    margin-top: 13px !important;
+    -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b !important;
+    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b !important;
+}

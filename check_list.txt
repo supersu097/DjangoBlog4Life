@@ -1,0 +1,2 @@
+1. settings 里面更改allow_host
+2. 改secret_key.py

@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load my_filter %}
+{% block body %}
+    <style>
+        ul.errorlist {
+            list-style-type: none;
+            padding-left: 0;
+            color: red;
+        }
+    </style>
+    <div id="content" class="site-content">
+        <div class="container">
+            <div class="row">
+                <div id="primary" class="col-md-9 content-area">
+                    <main id="main" role="main">
+                        <article id="post-670"
+                                 class="post-content post-670 post type-post status-publish format-standard hentry category-linux tag-cdn tag-fontawesome tag-webfont tag-21">
+                            <header class="entry-header">
+                                <span class="screen-reader-text">{{ curr_post.title }}</span>
+                                <h1 class="entry-title">{{ curr_post.title }}</h1>
+
+                                <div class="entry-meta">
+                                    <h5 class="entry-date"><i class="fa fa-calendar-o"></i> <a
+                                            href="/{{ curr_post.slug }}"
+                                            rel="bookmark">
+                                        <time class="entry-date" datetime="{{ curr_post.post_date }}">
+                                            {{ curr_post.post_date|date:'Y年n月d日' }}
+                                        </time>
+                                    </a><span class="byline"><span class="sep"></span><i class="fa fa-user"></i>
+                                        <span class="author vcard">{{ superuser_name|capfirst }}</span></span> <i
+                                            class="fa fa-comments-o"></i><span
+                                            class="screen-reader-text">Comments </span>
+                                        <a href="/{{ curr_post.slug }}/#respond"
+                                           class="comments-link">{{ curr_post.comments_set.count }} Comment</a>
+                                    </h5>
+                                </div><!-- .entry-meta -->
+                            </header><!-- .entry-header -->
+
+                            <div class="entry-content">
+                                <div class="sharp-before-content" id="sharp-1509733508">
+                                    <div class="advads-edit-bar advads-edit-appear">
+                                        <a href="#" class="advads-edit-button" title="页面内容之前" rel="nofollow"><span
+                                                class="dashicons dashicons-edit"></span></a>
+                                    </div>
+                                    {{ before_content_adsense|safe }}
+                                </div>
+                                {% if curr_post.is_wordpress == 'yes' %}
+                                    {% if curr_post.price %}
+                                        {% if does_pay == 'PAID' %}
+                                            {{ curr_post.content|media_replace|empty2br|is_highlightjs|safe }}
+                                        {% else %}
+                                            {% with var_one=curr_post.content|media_replace|empty2br|is_highlightjs|safe %}
+                                                {% enable_paywall var_one order_id callback_url curr_post.price curr_post.title %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ curr_post.content|media_replace|empty2br|is_highlightjs|safe }}
+                                    {% endif %}
+                                {% else %}
+                                    {% if curr_post.price %}
+                                        {% if does_pay == 'PAID' %}
+                                            {{ curr_post.content|media_replace|is_highlightjs|safe }}
+                                        {% else %}
+                                            {% with var_one=curr_post.content|media_replace|is_highlightjs|safe %}
+                                                {% enable_paywall var_one order_id callback_url curr_post.price curr_post.title %}
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ curr_post.content|media_replace|is_highlightjs|safe }}
+                                    {% endif %}
+                                {% endif %}
+                                <div class="sharp-after-content" id="sharp-1137431673">
+                                    <div class="advads-edit-bar advads-edit-appear">
+                                        <a href="/" class="advads-edit-button" title="页面内容之后" rel="nofollow"><span
+                                                class="dashicons dashicons-edit"></span></a>
+                                    </div>
+                                    {{ after_content_adsense |safe }}
+                                </div>
+                            </div><!-- .entry-content -->
+
+                            <footer class="entry-footer">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6 cattegories"><span class="cat-links"><i
+                                            class="fa fa-folder-open"></i>
+                                        <a href="/category/{{ category_name |to_slug }}"
+                                           rel="category tag">{{ category_name }}</a></span>
+                                    </div>
+                                    <div class="col-md-6 tags">
+                                    <span class="tags-links"><i class="fa fa-tags"></i>
+                                        {% for tag in tag_list %}
+                                            <a href="/tag/{{ tag.tag_name |to_slug }}" rel="tag">{{ tag.tag_name }}</a>
+                                            {% if not forloop.last %},{% endif %}
+                                        {% endfor %}
+                                    </span>
+                                    </div>
+                                    <br>
+                                </div>
+                            </footer><!-- .entry-footer -->
+                        </article><!-- #post-## -->
+                    </main><!-- #main -->
+                    <div class="post-navigation">
+                        <nav class="navigation" role="navigation">
+                            <h2 class="screen-reader-text">Post navigation</h2>
+                            <div class="nav-links">
+                                <div class="row">
+                                    <!-- Get Previous Post -->
+                                    {% if previous_post %}
+                                        <div class="col-md-6 prev-post">
+                                            <a class="" href="/{{ previous_post.slug }}">
+                                        <span class="next-prev-text">
+                                            <i class="fa fa-angle-left"></i> 上一页
+                                        </span><br>
+                                                {{ previous_post.title }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    <!-- Get Next Post -->
+                                    {% if next_post %}
+                                        <div class="col-md-6 next-post">
+                                            <a class="" href="/{{ next_post.slug }}">
+                                        <span class="next-prev-text">下一页
+                                            <i class="fa fa-angle-right"></i>
+                                        </span><br>
+                                                {{ next_post.title }}
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col-md-6">
+                                        <p></p>
+                                    </div>
+                                </div><!-- row -->
+                            </div><!-- .nav-links -->
+                        </nav><!-- .navigation-->
+                    </div>
+                    {% if site_comment_switch == 'enabled' and curr_post.comment_status == 'opened' %}
+                        {% include 'comments_list.html' %}
+                    {% endif %}
+                </div>
+
+{% endblock %}
