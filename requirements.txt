@@ -3,7 +3,7 @@ py3-validate-email==1.0.0
 beautifulsoup4==4.9.3
 gunicorn==20.1.0
 html5lib==1.1
-Pillow==7.2.0
+Pillow==8.1.2
 Django==2.2.19 # rq.filter: >=2.2,<2.3
 django-simple-captcha==0.5.14
 django-ckeditor==6.0.0
