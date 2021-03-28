@@ -1,7 +1,7 @@
 # DjangoBlog4Life
 :snake:一个[WordPress](https://wordpress.org/themes/nisarg/)主题的`Django`博客
 
-[![Requirements Status](https://requires.io/github/supersu097/DjangoBlog4Life/requirements.svg?branch=main)](https://requires.io/github/supersu097/DjangoBlog4Life/requirements/?branch=main)[![license](https://img.shields.io/github/license/supersu097/DjangoBlog4Life.svg)]()
+[![Requirements Status](https://requires.io/github/supersu097/DjangoBlog4Life/requirements.svg?branch=main)](https://requires.io/github/supersu097/DjangoBlog4Life/requirements/?branch=main)[![Vulnerability](https://badgen.net/badge/snyk/badgen/badgen.net)]()[![license](https://img.shields.io/github/license/supersu097/DjangoBlog4Life.svg)]()
 ## Philosophy
 - WordPress主题做前端，后端由Django驱动
 - 轻量化，数据库默认采用Sqlite，可自行升级为MySQL
