@@ -1,5 +1,5 @@
 # DjangoBlog4Life
-:snake:一个WordPress主题的Django博客
+:snake:一个`WordPress`主题的`Django`博客
 
 ## Philosophy
 - WordPress主题做前端，后端由Django驱动
