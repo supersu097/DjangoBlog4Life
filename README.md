@@ -1,5 +1,5 @@
 # DjangoBlog4Life
-:snake:一个[WordPress](https://wordpress.org/themes/nisarg/)主题的[![](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)]()博客
+:snake:一个[WordPress](https://wordpress.org/themes/nisarg/)主题的`Django`博客
 
 [![Requirements Status](https://requires.io/github/supersu097/DjangoBlog4Life/requirements.svg?branch=main)](https://requires.io/github/supersu097/DjangoBlog4Life/requirements/?branch=main)
 [![](https://img.shields.io/website-up-down-green-red/http/sharpgan.com)]()
