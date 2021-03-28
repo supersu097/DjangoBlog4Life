@@ -58,11 +58,10 @@ class CommentsFormForNotLoggedIn(forms.Form):
     def clean_user_email(self):
         user_email = self.cleaned_data['user_email']
         is_valid = validate_email(email_address=user_email,
-                                  check_mx=True,
-                                  from_address='hello@hello.com',
-                                  helo_host='myhost', smtp_timeout=10, dns_timeout=10,
-                                  use_blacklist=True, debug=True)
-        if not is_valid:
+                                  smtp_from_address='hello@hello.com',
+                                  smtp_helo_host='myhost', smtp_timeout=10, dns_timeout=10,
+                                  check_blacklist=True, smtp_debug=True)
+	if not is_valid:
             raise ValidationError(
                 "你的邮箱好像不是有效的邮箱呢，检查一下哪里写错了哦~"
             )
