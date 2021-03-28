@@ -5,6 +5,8 @@
 [![](https://img.shields.io/website-up-down-green-red/http/sharpgan.com)]()
 [![license](https://img.shields.io/github/license/supersu097/DjangoBlog4Life.svg)]()
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+
+![index](screenshot.png)
 ## Philosophy
 - WordPress主题做前端，后端由Django驱动
 - 轻量化，数据库默认采用Sqlite，可自行升级为MySQL
